@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+   splunk1:
+    image: ${SPLUNK_IMAGE:-splunk/splunk:latest}
+    container_name: splunk1
+    hostname: splunk1
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password1
+
+    ports:
+      - 8002:8000
+      - 8088:8088
+      - 8089:8089
+      - 9997:9997
+    volumes:
+      - ./splunk_files/deploymentclient.conf:/opt/splunk/etc/system/local/deploymentclient.conf
+      - ./splunk_files/${SPLUNK_APP_ID}:/opt/splunk/etc/apps/${SPLUNK_APP_ID}/
+      - ./splunk_files/${SPLUNK_APP_ID_2}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_2}/
+      - ./splunk_files/${SPLUNK_APP_ID_3}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_3}/
+      - ./splunk_files/${SPLUNK_APP_ID_4}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_4}/
+      - ./splunk_files/${SPLUNK_APP_ID_5}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_5}/
+      - ./splunk_files/${SPLUNK_APP_ID_6}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_6}/
+      - ./splunk_files/${SPLUNK_APP_ID_7}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_7}/
+      - ./splunk_files/${SPLUNK_APP_ID_8}:/opt/splunk/etc/apps/${SPLUNK_APP_ID_8}/
+      
+
